@@ -1,16 +1,25 @@
 import { type FormEvent, useEffect, useState } from 'react';
 import { CheckCircle2, Clock, MapPin, MessageCircle, Phone } from 'lucide-react';
 import { HOTEL_CONFIG } from '../config/hotelConfig';
+import { useLanguage } from '../i18n/LanguageContext';
+import { LuxuryDivider } from './LuxuryDivider';
 
 interface ContactSectionProps {
   prefilledSubject?: { label: string; nonce: number };
 }
 
+type InterestKey =
+  | 'availability'
+  | 'doubleRoom'
+  | 'twinRoom'
+  | 'corporateStay';
+
 export function ContactSection({ prefilledSubject }: ContactSectionProps) {
+  const { t } = useLanguage();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [interest, setInterest] = useState('Room Availability');
+  const [interest, setInterest] = useState<InterestKey>('availability');
   const [dates, setDates] = useState('');
   const [notes, setNotes] = useState('');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -18,14 +27,16 @@ export function ContactSection({ prefilledSubject }: ContactSectionProps) {
 
   useEffect(() => {
     if (!prefilledSubject) return;
-    setInterest('Room Availability');
-    setNotes(`Interested in: ${prefilledSubject.label}`);
+    setInterest('availability');
+    setNotes(`${t.contact.notesPrefix} ${prefilledSubject.label}`);
     setSubmitted(false);
-  }, [prefilledSubject]);
+  }, [prefilledSubject, t.contact.notesPrefix]);
 
   const whatsappUrl = `https://wa.me/${HOTEL_CONFIG.contact.whatsappNumber}?text=${encodeURIComponent(
     HOTEL_CONFIG.contact.whatsappPrefill
   )}`;
+
+  const selectedInterestLabel = t.contact.interestOptions[interest];
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -37,15 +48,15 @@ export function ContactSection({ prefilledSubject }: ContactSectionProps) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (trimmedName.length < 2) {
-      setErrorMsg('Please enter your full name.');
+      setErrorMsg(t.contact.validationName);
       return;
     }
     if (!trimmedPhone && !trimmedEmail) {
-      setErrorMsg('Please enter a telephone number or email address.');
+      setErrorMsg(t.contact.validationContact);
       return;
     }
     if (trimmedEmail && !emailRegex.test(trimmedEmail)) {
-      setErrorMsg('Please enter a valid email address.');
+      setErrorMsg(t.contact.validationEmail);
       return;
     }
 
@@ -55,39 +66,37 @@ export function ContactSection({ prefilledSubject }: ContactSectionProps) {
   return (
     <section
       id="contact"
-      className="relative bg-[#060911] text-[#F6F2EA] py-20 sm:py-28 lg:py-32"
+      className="relative w-full overflow-x-clip bg-[#060911] text-[#F6F2EA] py-20 sm:py-28 lg:py-32"
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
           {/* Front Desk Direct Channels */}
-          <div className="lg:col-span-5 space-y-8">
+          <div className="lg:col-span-5 space-y-8 min-w-0">
             <div>
-              <p className="text-xs font-semibold tracking-[0.22em] text-[#D4B475] mb-3">
-                Contact Front Desk
+              <p className="text-xs font-semibold tracking-[0.2em] text-[#D4B475] mb-3">
+                {t.contact.kicker}
               </p>
               <h2
-                className="font-serif text-[clamp(2rem,3.6vw,3.15rem)] font-medium leading-[1.12] text-[#F6F2EA] mb-4"
+                className="font-serif text-[clamp(2rem,3.6vw,3.15rem)] font-medium leading-[1.18] text-[#F6F2EA] mb-4"
                 style={{ textWrap: 'balance' }}
               >
-                Speak directly with {HOTEL_CONFIG.name}.
+                {t.contact.headline}
               </h2>
               <p className="text-base text-[#C8C1B4] leading-relaxed">
-                Reach our 24-hour front desk by telephone or WhatsApp for room
-                availability, check-in guidance, and stay enquiries in GIDC
-                Naroda, Ahmedabad.
+                {t.contact.description}
               </p>
             </div>
 
-            <div className="space-y-4 pt-6 border-t border-white/10 text-sm">
+            <div>
+              <LuxuryDivider tone="dark" variant="hairline" className="mb-6" />
+              <div className="space-y-4 text-sm">
               <div className="flex items-start gap-3.5">
                 <MapPin className="w-4 h-4 text-[#D4B475] shrink-0 mt-1" />
                 <div>
                   <p className="font-medium text-[#F6F2EA]">
-                    {HOTEL_CONFIG.contact.addressLine1}
+                    {t.location.addressLine1}
                   </p>
-                  <p className="text-[#C8C1B4]">
-                    {HOTEL_CONFIG.contact.addressLine2}
-                  </p>
+                  <p className="text-[#C8C1B4]">{t.location.addressLine2}</p>
                 </div>
               </div>
 
@@ -104,8 +113,9 @@ export function ContactSection({ prefilledSubject }: ContactSectionProps) {
               <div className="flex items-center gap-3.5">
                 <Clock className="w-4 h-4 text-[#D4B475] shrink-0" />
                 <span className="text-[#C8C1B4]">
-                  {HOTEL_CONFIG.contact.conciergeHours}
+                  {t.contact.conciergeHours}
                 </span>
+              </div>
               </div>
             </div>
 
@@ -115,67 +125,69 @@ export function ContactSection({ prefilledSubject }: ContactSectionProps) {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2.5 px-5 py-3.5 text-xs font-semibold tracking-wider text-[#060911] bg-[#D4B475] hover:bg-[#E7CE99] rounded-sm transition-colors whitespace-nowrap"
+                className="flex-1 inline-flex items-center justify-center gap-2.5 px-5 py-3.5 text-xs font-semibold tracking-wider text-[#060911] bg-[#D4B475] hover:bg-[#E7CE99] rounded-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(212,180,117,0.38)] whitespace-nowrap"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp Enquiry</span>
+                <span>{t.contact.whatsappEnquiry}</span>
               </a>
 
               <a
                 href={HOTEL_CONFIG.contact.phoneHref}
-                className="flex-1 inline-flex items-center justify-center gap-2.5 px-5 py-3.5 text-xs font-semibold tracking-wider text-[#F6F2EA] bg-[#0B1324] hover:bg-[#111C33] border border-[#D4B475]/35 hover:border-[#D4B475] rounded-sm transition-colors whitespace-nowrap"
+                className="flex-1 inline-flex items-center justify-center gap-2.5 px-5 py-3.5 text-xs font-semibold tracking-wider text-[#F6F2EA] bg-[#0B1324] hover:bg-[#16233E] hover:text-[#E7CE99] border border-[#D4B475]/35 hover:border-[#D4B475] rounded-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(212,180,117,0.22)] whitespace-nowrap"
               >
                 <Phone className="w-4 h-4 text-[#D4B475]" />
-                <span>Call Now</span>
+                <span>{t.contact.callNow}</span>
               </a>
             </div>
           </div>
 
           {/* Enquiry Presentation Form */}
-          <div className="lg:col-span-7 bg-[#0B1324] border border-[#D4B475]/20 rounded-sm p-6 sm:p-9 shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
+          <div className="lg:col-span-7 bg-[#0B1324] border border-[#D4B475]/20 rounded-sm p-6 sm:p-9 shadow-[0_24px_60px_rgba(0,0,0,0.45)] min-w-0">
             {submitted ? (
               <div className="py-8 text-center space-y-4">
                 <CheckCircle2 className="w-10 h-10 text-[#D4B475] mx-auto stroke-[1.5]" />
-                <h3 className="font-serif text-3xl text-[#F6F2EA]">
-                  Enquiry Prepared
+                <h3 className="font-serif text-3xl text-[#F6F2EA] leading-snug">
+                  {t.contact.submittedTitle}
                 </h3>
                 <p className="text-sm text-[#C8C1B4] max-w-md mx-auto leading-relaxed">
-                  Thank you, <span className="text-[#F6F2EA]">{name}</span>. To
-                  send your enquiry directly to {HOTEL_CONFIG.name}, please
-                  reach our 24-Hour Front Desk via WhatsApp or telephone below.
+                  {t.contact.submittedIntroBeforeName}
+                  <span className="text-[#F6F2EA]">{name}</span>
+                  {t.contact.submittedIntroAfterName}
                 </p>
                 <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
                   <a
                     href={`https://wa.me/${HOTEL_CONFIG.contact.whatsappNumber}?text=${encodeURIComponent(
-                      `Hello Hotel Silver Inn, my name is ${name}. Enquiry: ${interest}${
-                        dates ? ` (${dates})` : ''
-                      }. ${notes}`
+                      t.contact.whatsappCustomMessage({
+                        name,
+                        interest: selectedInterestLabel,
+                        dates,
+                        notes,
+                      })
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 text-xs font-semibold tracking-wider text-[#060911] bg-[#D4B475] hover:bg-[#E7CE99] rounded-sm transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-3 text-xs font-semibold tracking-wider text-[#060911] bg-[#D4B475] hover:bg-[#E7CE99] rounded-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(212,180,117,0.38)]"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>Send via WhatsApp</span>
+                    <span>{t.contact.sendViaWhatsapp}</span>
                   </a>
                   <button
                     type="button"
                     onClick={() => setSubmitted(false)}
-                    className="px-5 py-3 text-xs font-medium text-[#C8C1B4] hover:text-[#F6F2EA] border border-white/15 rounded-sm transition-colors cursor-pointer"
+                    className="px-5 py-3 text-xs font-medium text-[#C8C1B4] hover:bg-[#16233E] hover:text-[#E7CE99] border border-white/15 hover:border-[#D4B475]/60 rounded-sm transition-all duration-200 hover:shadow-[0_8px_20px_rgba(212,180,117,0.18)] cursor-pointer"
                   >
-                    Edit Enquiry Details
+                    {t.contact.editEnquiry}
                   </button>
                 </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate className="space-y-5">
                 <div className="pb-4 border-b border-white/10">
-                  <h3 className="font-serif text-2xl sm:text-3xl text-[#F6F2EA]">
-                    Room &amp; Stay Enquiry
+                  <h3 className="font-serif text-2xl sm:text-3xl text-[#F6F2EA] leading-snug">
+                    {t.contact.formTitle}
                   </h3>
-                  <p className="text-xs text-[#C8C1B4] mt-1">
-                    {HOTEL_CONFIG.contact.conciergeHours} ·{' '}
-                    {HOTEL_CONFIG.contact.phoneDisplay}
+                  <p className="text-xs text-[#C8C1B4] mt-1 tabular-nums">
+                    {t.contact.formSubtitle}
                   </p>
                 </div>
 
@@ -194,7 +206,7 @@ export function ContactSection({ prefilledSubject }: ContactSectionProps) {
                       htmlFor="enquiry-name"
                       className="block text-xs font-medium text-[#C8C1B4] mb-2"
                     >
-                      Full Name *
+                      {t.contact.nameLabel}
                     </label>
                     <input
                       id="enquiry-name"
@@ -202,7 +214,7 @@ export function ContactSection({ prefilledSubject }: ContactSectionProps) {
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Your full name"
+                      placeholder={t.contact.namePlaceholder}
                       className="w-full px-4 py-3 text-sm text-[#F6F2EA] bg-[#060911] border border-white/15 focus:border-[#D4B475] focus:outline-none rounded-sm transition-colors placeholder:text-[#C8C1B4]/40"
                     />
                   </div>
@@ -212,14 +224,14 @@ export function ContactSection({ prefilledSubject }: ContactSectionProps) {
                       htmlFor="enquiry-phone"
                       className="block text-xs font-medium text-[#C8C1B4] mb-2"
                     >
-                      Phone / WhatsApp *
+                      {t.contact.phoneLabel}
                     </label>
                     <input
                       id="enquiry-phone"
                       type="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+91 98000 00000"
+                      placeholder={t.contact.phonePlaceholder}
                       className="w-full px-4 py-3 text-sm text-[#F6F2EA] bg-[#060911] border border-white/15 focus:border-[#D4B475] focus:outline-none rounded-sm transition-colors placeholder:text-[#C8C1B4]/40"
                     />
                   </div>
@@ -231,14 +243,14 @@ export function ContactSection({ prefilledSubject }: ContactSectionProps) {
                       htmlFor="enquiry-email"
                       className="block text-xs font-medium text-[#C8C1B4] mb-2"
                     >
-                      Email Address (Optional)
+                      {t.contact.emailLabel}
                     </label>
                     <input
                       id="enquiry-email"
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="name@example.com"
+                      placeholder={t.contact.emailPlaceholder}
                       className="w-full px-4 py-3 text-sm text-[#F6F2EA] bg-[#060911] border border-white/15 focus:border-[#D4B475] focus:outline-none rounded-sm transition-colors placeholder:text-[#C8C1B4]/40"
                     />
                   </div>
@@ -248,21 +260,27 @@ export function ContactSection({ prefilledSubject }: ContactSectionProps) {
                       htmlFor="enquiry-interest"
                       className="block text-xs font-medium text-[#C8C1B4] mb-2"
                     >
-                      Enquiry Type
+                      {t.contact.interestLabel}
                     </label>
                     <select
                       id="enquiry-interest"
                       value={interest}
-                      onChange={(e) => setInterest(e.target.value)}
+                      onChange={(e) =>
+                        setInterest(e.target.value as InterestKey)
+                      }
                       className="w-full px-4 py-3 text-sm text-[#F6F2EA] bg-[#060911] border border-white/15 focus:border-[#D4B475] focus:outline-none rounded-sm transition-colors"
                     >
-                      <option value="Room Availability">Room Availability</option>
-                      <option value="Double Bed AC Room">
-                        Double Bed AC Room
+                      <option value="availability">
+                        {t.contact.interestOptions.availability}
                       </option>
-                      <option value="Twin Bed AC Room">Twin Bed AC Room</option>
-                      <option value="Corporate / Group Stay">
-                        Corporate / Group Stay
+                      <option value="doubleRoom">
+                        {t.contact.interestOptions.doubleRoom}
+                      </option>
+                      <option value="twinRoom">
+                        {t.contact.interestOptions.twinRoom}
+                      </option>
+                      <option value="corporateStay">
+                        {t.contact.interestOptions.corporateStay}
                       </option>
                     </select>
                   </div>
@@ -273,14 +291,14 @@ export function ContactSection({ prefilledSubject }: ContactSectionProps) {
                     htmlFor="enquiry-dates"
                     className="block text-xs font-medium text-[#C8C1B4] mb-2"
                   >
-                    Preferred Check-In &amp; Check-Out Dates
+                    {t.contact.datesLabel}
                   </label>
                   <input
                     id="enquiry-dates"
                     type="text"
                     value={dates}
                     onChange={(e) => setDates(e.target.value)}
-                    placeholder="e.g. Check-in date, nights, number of guests"
+                    placeholder={t.contact.datesPlaceholder}
                     className="w-full px-4 py-3 text-sm text-[#F6F2EA] bg-[#060911] border border-white/15 focus:border-[#D4B475] focus:outline-none rounded-sm transition-colors placeholder:text-[#C8C1B4]/40"
                   />
                 </div>
@@ -290,27 +308,27 @@ export function ContactSection({ prefilledSubject }: ContactSectionProps) {
                     htmlFor="enquiry-notes"
                     className="block text-xs font-medium text-[#C8C1B4] mb-2"
                   >
-                    Additional Requests
+                    {t.contact.notesLabel}
                   </label>
                   <textarea
                     id="enquiry-notes"
                     rows={3}
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
-                    placeholder="Share arrival timing, parking requirement, or room preferences..."
+                    placeholder={t.contact.notesPlaceholder}
                     className="w-full px-4 py-3 text-sm text-[#F6F2EA] bg-[#060911] border border-white/15 focus:border-[#D4B475] focus:outline-none rounded-sm transition-colors placeholder:text-[#C8C1B4]/40 resize-y"
                   />
                 </div>
 
                 <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <p className="text-xs text-[#C8C1B4]/75">
-                    Direct front desk enquiry · No online payment collected.
+                    {t.contact.formDisclaimer}
                   </p>
                   <button
                     type="submit"
-                    className="px-7 py-3.5 text-xs font-semibold tracking-wider text-[#060911] bg-[#D4B475] hover:bg-[#E7CE99] rounded-sm transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                    className="px-7 py-3.5 text-xs font-semibold tracking-wider text-[#060911] bg-[#D4B475] hover:bg-[#E7CE99] rounded-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(212,180,117,0.38)] cursor-pointer whitespace-nowrap shrink-0"
                   >
-                    Prepare Enquiry
+                    {t.contact.submitButton}
                   </button>
                 </div>
               </form>

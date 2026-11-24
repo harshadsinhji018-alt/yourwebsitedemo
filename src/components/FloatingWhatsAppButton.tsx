@@ -1,4 +1,5 @@
 import { HOTEL_CONFIG } from '../config/hotelConfig';
+import { useLanguage } from '../i18n/LanguageContext';
 
 /**
  * Floating bottom-left WhatsApp contact button.
@@ -6,6 +7,8 @@ import { HOTEL_CONFIG } from '../config/hotelConfig';
  * mobile navigation drawers and lightboxes (z-50).
  */
 export function FloatingWhatsAppButton() {
+  const { t } = useLanguage();
+
   const whatsappHref = `https://wa.me/${HOTEL_CONFIG.contact.floatingWhatsappNumber}?text=${encodeURIComponent(
     HOTEL_CONFIG.contact.floatingWhatsappPrefill
   )}`;
@@ -22,8 +25,8 @@ export function FloatingWhatsAppButton() {
         href={whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat with Hotel Silver Inn on WhatsApp (+919875274952)"
-        className="relative flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#1FAF54] hover:bg-[#179947] text-white border border-[#D4B475]/65 shadow-[0_12px_30px_rgba(6,9,17,0.5)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(6,9,17,0.62)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#D4B475]"
+        aria-label={t.floatingWhatsapp.ariaLabel}
+        className="relative flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#1FAF54] hover:bg-[#158F42] text-white border border-[#D4B475]/65 hover:border-[#E7CE99] shadow-[0_12px_30px_rgba(6,9,17,0.5)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_16px_38px_rgba(31,175,84,0.45)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#D4B475]"
       >
         {/* Official WhatsApp mark SVG */}
         <svg
@@ -40,7 +43,7 @@ export function FloatingWhatsAppButton() {
         role="tooltip"
         className="pointer-events-none hidden md:inline-flex items-center whitespace-nowrap absolute left-full top-1/2 -translate-y-1/2 ml-3 px-3.5 py-2 text-xs font-medium text-[#F6F2EA] bg-[#060911]/95 border border-[#D4B475]/35 rounded-sm shadow-xl opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-focus-within:opacity-100 group-focus-within:translate-x-0 transition-all duration-200"
       >
-        Chat on WhatsApp
+        {t.floatingWhatsapp.tooltip}
       </span>
     </div>
   );

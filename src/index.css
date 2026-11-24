@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: "Cormorant Garamond", "Noto Sans Gujarati", "Noto Sans Devanagari", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", "Noto Sans Gujarati", "Noto Sans Devanagari", -apple-system, BlinkMacSystemFont, sans-serif;
 
   --color-obsidian: #060911;
   --color-midnight: #0B1324;
@@ -15,7 +15,28 @@
 }
 
 @layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    :root {
+      scrollbar-width: thin;
+      scrollbar-color: #C4A25E #060911;
+    }
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   html {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
     scroll-behavior: smooth;
     font-family: var(--font-sans);
     background-color: #060911;
@@ -24,12 +45,50 @@
   }
 
   body {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #060911;
     overflow-x: clip;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
   }
 
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-serif);
   }
+}
+
+/* Integrated Champagne-Gold & Obsidian Viewport Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060911;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #9C7A3C 0%, #D4B475 50%, #B48E48 100%);
+  border-radius: 9999px;
+  border: 2px solid #060911;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #B48E48 0%, #E7CE99 50%, #D4B475 100%);
+}
+
+::-webkit-scrollbar-corner {
+  background: #060911;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -41,19 +100,6 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-/* Custom hairline divider shimmer */
-.luxury-divider {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(212, 180, 117, 0.35) 25%,
-    rgba(212, 180, 117, 0.65) 50%,
-    rgba(212, 180, 117, 0.35) 75%,
-    transparent 100%
-  );
 }
 
 /* Subtle glassmorphism surface */

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Building2 } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 interface LuxuryImageProps {
   src: string;
@@ -16,6 +17,7 @@ export function LuxuryImage({
   fallbackTitle,
   loading = 'lazy',
 }: LuxuryImageProps) {
+  const { t } = useLanguage();
   const [hasError, setHasError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -31,7 +33,7 @@ export function LuxuryImage({
           {fallbackTitle || alt}
         </p>
         <span className="mt-1 text-xs text-[#C8C1B4] tracking-wider">
-          Hotel Silver Inn · Naroda, Ahmedabad
+          {t.imageFallback.subtitle}
         </span>
       </div>
     );
