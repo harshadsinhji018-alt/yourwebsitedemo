@@ -1,0 +1,6 @@
+{
+  "name": "The Aurelia Grand",
+  "description": "Ultra-luxury coastal hotel & thermal sanctuary showcase featuring curated suites, fine dining, private concierge, and interactive Google Maps location.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
