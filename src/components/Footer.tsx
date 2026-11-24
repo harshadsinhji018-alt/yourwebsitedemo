@@ -2,12 +2,11 @@ import { ArrowUp } from 'lucide-react';
 import { HOTEL_CONFIG } from '../config/hotelConfig';
 
 const FOOTER_LINKS = [
-  { label: 'Estate', href: '#about' },
-  { label: 'Suites', href: '#suites' },
+  { label: 'About', href: '#about' },
+  { label: 'Rooms', href: '#suites' },
   { label: 'Amenities', href: '#amenities' },
-  { label: 'Dining', href: '#dining' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'Attractions', href: '#attractions' },
+  { label: 'Neighborhood', href: '#attractions' },
   { label: 'Location', href: '#location' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -19,7 +18,7 @@ export function Footer() {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-white/10">
           <div>
             <p className="font-serif text-2xl sm:text-3xl font-semibold text-[#F6F2EA]">
-              {HOTEL_CONFIG.name}
+              {HOTEL_CONFIG.displayBrand}
             </p>
             <p className="text-xs tracking-[0.18em] text-[#D4B475] mt-1.5">
               {HOTEL_CONFIG.regionLabel}
@@ -61,13 +60,15 @@ export function Footer() {
           </a>
         </div>
 
-        <div className="pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-[#C8C1B4]/80">
+        <div className="pt-8 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs text-[#C8C1B4]/80">
           <p>
-            © {new Date().getFullYear()} {HOTEL_CONFIG.name}. Coastal Hospitality
-            Showcase.
+            © {new Date().getFullYear()} {HOTEL_CONFIG.name}. All rights
+            reserved.
           </p>
           <p className="tabular-nums">
-            {HOTEL_CONFIG.contact.addressLine1} · {HOTEL_CONFIG.contact.phoneDisplay}
+            {HOTEL_CONFIG.contact.addressLine1},{' '}
+            {HOTEL_CONFIG.contact.addressLine2} ·{' '}
+            {HOTEL_CONFIG.contact.phoneDisplay}
           </p>
         </div>
       </div>

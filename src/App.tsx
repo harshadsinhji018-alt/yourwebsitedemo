@@ -5,7 +5,6 @@ import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { RoomsSection } from './components/RoomsSection';
 import { AmenitiesSection } from './components/AmenitiesSection';
-import { DiningSection } from './components/DiningSection';
 import { GallerySection } from './components/GallerySection';
 import { AttractionsSection } from './components/AttractionsSection';
 import { LocationSection } from './components/LocationSection';
@@ -65,9 +64,6 @@ export default function App() {
             onEnquireRoom={(roomName) => scrollToContact(roomName)}
           />
           <AmenitiesSection />
-          <DiningSection
-            onEnquireDining={() => scrollToContact('Dining Reservation')}
-          />
           <GallerySection />
           <AttractionsSection />
           <LocationSection />

@@ -31,7 +31,7 @@ export function LuxuryImage({
           {fallbackTitle || alt}
         </p>
         <span className="mt-1 text-xs text-[#C8C1B4] tracking-wider">
-          The Aurelia Grand
+          Hotel Silver Inn · Naroda, Ahmedabad
         </span>
       </div>
     );

@@ -12,13 +12,13 @@ export function AttractionsSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-[#D4B475]/20 mb-12">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold tracking-[0.22em] text-[#D4B475] mb-3">
-              Around The Peninsula
+              Neighborhood &amp; Connectivity
             </p>
             <h2
               className="font-serif text-[clamp(2rem,3.6vw,3.15rem)] font-medium leading-[1.12] text-[#F6F2EA]"
               style={{ textWrap: 'balance' }}
             >
-              Curated coastal excursions moments from our private pier.
+              Positioned in GIDC Naroda for business and city access.
             </h2>
           </div>
 
@@ -35,10 +35,10 @@ export function AttractionsSection() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {HOTEL_CONFIG.attractions.map((place, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {HOTEL_CONFIG.localityHighlights.map((item, idx) => (
             <motion.article
-              key={place.id}
+              key={item.id}
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -50,25 +50,20 @@ export function AttractionsSection() {
               className="p-7 bg-[#0B1324] border border-white/10 hover:border-[#D4B475]/40 rounded-sm flex flex-col justify-between gap-5 transition-colors duration-200"
             >
               <div>
-                <div className="flex items-center justify-between gap-4 text-xs text-[#C8C1B4] tabular-nums mb-4">
-                  <span className="text-[#D4B475]">{place.category}</span>
-                  <span>
-                    {place.travelTime} · {place.distance}
-                  </span>
-                </div>
+                <p className="text-xs text-[#D4B475] mb-4">{item.tag}</p>
 
                 <h3 className="font-serif text-2xl font-medium text-[#F6F2EA] mb-2.5">
-                  {place.name}
+                  {item.name}
                 </h3>
 
                 <p className="text-sm text-[#C8C1B4] leading-relaxed">
-                  {place.description}
+                  {item.description}
                 </p>
               </div>
 
               <div className="pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-[#F6F2EA]/75">
                 <Compass className="w-3.5 h-3.5 text-[#D4B475]" />
-                <span>Concierge-guided transfers available upon request</span>
+                <span>Ask our 24-Hour Front Desk for local directions</span>
               </div>
             </motion.article>
           ))}

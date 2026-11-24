@@ -8,20 +8,19 @@ interface NavbarProps {
 
 const DESKTOP_LINKS = [
   { label: 'About', href: '#about' },
-  { label: 'Suites', href: '#suites' },
+  { label: 'Rooms', href: '#suites' },
   { label: 'Amenities', href: '#amenities' },
-  { label: 'Dining', href: '#dining' },
+  { label: 'Gallery', href: '#gallery' },
   { label: 'Location', href: '#location' },
 ];
 
 const MOBILE_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
-  { label: 'Rooms & Suites', href: '#suites' },
+  { label: 'Rooms', href: '#suites' },
   { label: 'Amenities', href: '#amenities' },
-  { label: 'Dining', href: '#dining' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'Attractions', href: '#attractions' },
+  { label: 'Neighborhood', href: '#attractions' },
   { label: 'Location', href: '#location' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -172,7 +171,7 @@ export function Navbar({ onNavigateEnquiry }: NavbarProps) {
               }}
               className="w-full py-3.5 px-6 text-sm font-semibold text-[#060911] bg-[#D4B475] hover:bg-[#E7CE99] rounded-sm transition-colors cursor-pointer"
             >
-              Private Concierge Enquiry
+              Enquire Now
             </button>
             <a
               href={HOTEL_CONFIG.contact.phoneHref}

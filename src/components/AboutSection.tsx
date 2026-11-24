@@ -10,7 +10,7 @@ export function AboutSection() {
       className="relative bg-[#F6F2EA] text-[#0B1324] py-20 sm:py-28 lg:py-32"
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           {/* Editorial Column */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -52,31 +52,31 @@ export function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Architectural Image Column */}
+          {/* Reception Interior Image Column */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 flex"
+            className="lg:col-span-6 flex justify-center lg:justify-end"
           >
-            <TiltFrame className="w-full rounded-sm overflow-hidden shadow-[0_24px_60px_rgba(6,9,17,0.18)]">
-              <div className="relative w-full h-full min-h-[380px] lg:min-h-[540px]">
+            <TiltFrame className="w-full max-w-[460px] rounded-sm overflow-hidden shadow-[0_24px_60px_rgba(6,9,17,0.18)]">
+              <div className="relative aspect-[3/4] w-full">
                 <LuxuryImage
-                  src={HOTEL_CONFIG.images.aboutAtrium}
-                  alt="Grand Atrium with midnight marble columns and champagne brass chandeliers"
+                  src={HOTEL_CONFIG.images.aboutReception}
+                  alt="Hotel Silver Inn illuminated reception desk and front lobby"
                   className="w-full h-full"
                 />
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-[#060911]/80 via-transparent to-transparent"
+                  className="absolute inset-0 bg-gradient-to-t from-[#060911]/85 via-transparent to-transparent"
                 />
-                <div className="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-7 sm:right-7 glass-obsidian border border-[#D4B475]/25 rounded-sm p-4 sm:p-5">
+                <div className="absolute bottom-5 left-5 right-5 glass-obsidian border border-[#D4B475]/25 rounded-sm p-4 sm:p-5">
                   <p className="text-xs tracking-[0.18em] text-[#D4B475] mb-1">
-                    Heritage &amp; Craft · Est. {HOTEL_CONFIG.establishedYear}
+                    {HOTEL_CONFIG.contact.conciergeHours}
                   </p>
                   <p className="font-serif text-lg sm:text-xl text-[#F6F2EA]">
-                    The Grand Atrium &amp; Travertine Reception Salon
+                    Reception &amp; Guest Check-In Desk
                   </p>
                 </div>
               </div>

@@ -46,57 +46,62 @@ export function GallerySection() {
   return (
     <section
       id="gallery"
-      className="relative bg-[#0B1324] text-[#F6F2EA] py-20 sm:py-28 lg:py-32"
+      className="relative bg-[#F6F2EA] text-[#0B1324] py-20 sm:py-28 lg:py-32"
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Header + Filter Bar */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-10 border-b border-[#D4B475]/20 mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-10 border-b border-[#0B1324]/15 mb-12">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-[0.22em] text-[#D4B475] mb-3">
-              Visual Archive
+            <p className="text-xs font-semibold tracking-[0.22em] text-[#8A6A2E] mb-3">
+              Property Gallery
             </p>
             <h2
-              className="font-serif text-[clamp(2rem,3.6vw,3.15rem)] font-medium leading-[1.12] text-[#F6F2EA]"
+              className="font-serif text-[clamp(2rem,3.6vw,3.15rem)] font-medium leading-[1.12] text-[#0B1324]"
               style={{ textWrap: 'balance' }}
             >
-              Architecture, twilight reflections, and quiet interiors.
+              Inside Hotel Silver Inn — entrance, reception, and rooms.
             </h2>
           </div>
 
           <div
             role="tablist"
             aria-label="Filter gallery photographs"
-            className="inline-flex flex-wrap items-center gap-1.5 p-1 bg-[#060911] border border-[#D4B475]/20 rounded-sm self-start lg:self-auto"
+            className="inline-flex flex-wrap items-center gap-1.5 p-1 bg-[#EAE3D5] border border-[#0B1324]/10 rounded-sm self-start lg:self-auto"
           >
-            {(['All', 'Architecture', 'Suites', 'Culinary & Spa'] as const).map(
-              (tab) => {
-                const active = category === tab;
-                return (
-                  <button
-                    key={tab}
-                    type="button"
-                    role="tab"
-                    aria-selected={active}
-                    onClick={() => {
-                      setCategory(tab);
-                      setLightboxIndex(null);
-                    }}
-                    className={`px-4 py-2 text-xs font-medium rounded-sm transition-colors duration-200 whitespace-nowrap shrink-0 cursor-pointer ${
-                      active
-                        ? 'bg-[#D4B475] text-[#060911]'
-                        : 'text-[#C8C1B4] hover:text-[#F6F2EA]'
-                    }`}
-                  >
-                    {tab}
-                  </button>
-                );
-              }
-            )}
+            {(
+              [
+                'All',
+                'Entrance & Lobby',
+                'Guest Rooms',
+                'Corridors & Washrooms',
+              ] as const
+            ).map((tab) => {
+              const active = category === tab;
+              return (
+                <button
+                  key={tab}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => {
+                    setCategory(tab);
+                    setLightboxIndex(null);
+                  }}
+                  className={`px-4 py-2 text-xs font-semibold rounded-sm transition-colors duration-200 whitespace-nowrap shrink-0 cursor-pointer ${
+                    active
+                      ? 'bg-[#0B1324] text-[#F6F2EA]'
+                      : 'text-[#2B3447] hover:text-[#0B1324]'
+                  }`}
+                >
+                  {tab}
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Responsive Architectural Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Responsive Architectural Grid Matching Native Orientations */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
           {items.map((item, idx) => (
             <motion.button
               key={item.id}
@@ -104,16 +109,16 @@ export function GallerySection() {
               onClick={() => setLightboxIndex(idx)}
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.12 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{
                 duration: 0.45,
-                delay: idx * 0.04,
+                delay: (idx % 4) * 0.04,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className={`group relative text-left rounded-sm overflow-hidden border border-[#D4B475]/20 bg-[#060911] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D4B475] ${
-                item.span === 'wide' && category === 'All'
-                  ? 'md:col-span-2 aspect-[16/9]'
-                  : 'aspect-[4/3]'
+              className={`group relative text-left rounded-sm overflow-hidden border border-[#0B1324]/15 bg-[#0B1324] shadow-[0_14px_36px_rgba(6,9,17,0.12)] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8A6A2E] ${
+                item.aspectClass === 'aspect-[16/10]' && category === 'All'
+                  ? 'sm:col-span-2 aspect-[16/10]'
+                  : 'aspect-[3/4]'
               }`}
             >
               <LuxuryImage
@@ -123,16 +128,16 @@ export function GallerySection() {
               />
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-[#060911]/85 via-[#060911]/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300"
+                className="absolute inset-0 bg-gradient-to-t from-[#060911]/85 via-[#060911]/15 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300"
               />
-              <div className="absolute top-4 right-4 w-9 h-9 rounded-sm bg-[#060911]/70 border border-[#D4B475]/30 flex items-center justify-center text-[#F6F2EA] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <div className="absolute top-3.5 right-3.5 w-9 h-9 rounded-sm bg-[#060911]/75 border border-[#D4B475]/30 flex items-center justify-center text-[#F6F2EA] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 <Expand className="w-4 h-4 text-[#D4B475]" />
               </div>
-              <div className="absolute bottom-5 left-5 right-5">
-                <p className="text-xs tracking-[0.18em] text-[#D4B475] mb-1">
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-[11px] tracking-[0.16em] text-[#D4B475] mb-1">
                   {item.category}
                 </p>
-                <p className="font-serif text-xl sm:text-2xl text-[#F6F2EA]">
+                <p className="font-serif text-lg sm:text-xl text-[#F6F2EA] leading-snug">
                   {item.title}
                 </p>
               </div>
@@ -141,7 +146,7 @@ export function GallerySection() {
         </div>
       </div>
 
-      {/* Smooth Lightbox Modal */}
+      {/* Smooth Uncropped Lightbox Modal */}
       {activeItem && lightboxIndex !== null && (
         <div
           role="dialog"
@@ -175,7 +180,7 @@ export function GallerySection() {
             </button>
           </div>
 
-          {/* Center Image Stage */}
+          {/* Center Image Stage (uncropped object-contain for both portrait & landscape) */}
           <div
             className="relative flex-1 flex items-center justify-center my-4 max-w-6xl w-full mx-auto min-h-0"
             onClick={(e) => e.stopPropagation()}
@@ -198,13 +203,13 @@ export function GallerySection() {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full h-full max-h-[68vh] aspect-[16/10] rounded-sm overflow-hidden border border-[#D4B475]/25 bg-[#0B1324]"
+              className="relative flex items-center justify-center max-h-[70vh] w-full rounded-sm overflow-hidden border border-[#D4B475]/20 bg-[#0B1324]/60 p-2"
             >
-              <LuxuryImage
+              <img
                 src={activeItem.image}
                 alt={activeItem.title}
-                loading="eager"
-                className="w-full h-full"
+                referrerPolicy="no-referrer"
+                className="max-h-[66vh] w-auto max-w-full object-contain rounded-sm"
               />
             </motion.div>
 
