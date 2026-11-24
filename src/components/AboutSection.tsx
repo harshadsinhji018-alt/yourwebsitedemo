@@ -60,27 +60,29 @@ export function AboutSection() {
             transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 flex justify-center lg:justify-end"
           >
-            <TiltFrame className="w-full max-w-[460px] rounded-sm overflow-hidden shadow-[0_24px_60px_rgba(6,9,17,0.18)]">
-              <div className="relative aspect-[3/4] w-full">
-                <LuxuryImage
-                  src={HOTEL_CONFIG.images.aboutReception}
-                  alt="Hotel Silver Inn illuminated reception desk and front lobby"
-                  className="w-full h-full"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-[#060911]/85 via-transparent to-transparent"
-                />
-                <div className="absolute bottom-5 left-5 right-5 glass-obsidian border border-[#D4B475]/25 rounded-sm p-4 sm:p-5">
-                  <p className="text-xs tracking-[0.18em] text-[#D4B475] mb-1">
-                    {HOTEL_CONFIG.contact.conciergeHours}
-                  </p>
-                  <p className="font-serif text-lg sm:text-xl text-[#F6F2EA]">
-                    Reception &amp; Guest Check-In Desk
-                  </p>
+            <div className="w-full max-w-[460px] animate-float-gentle float-about">
+              <TiltFrame className="w-full rounded-sm overflow-hidden shadow-[0_24px_60px_rgba(6,9,17,0.18)]">
+                <div className="relative aspect-[3/4] w-full">
+                  <LuxuryImage
+                    src={HOTEL_CONFIG.images.aboutReception}
+                    alt="Hotel Silver Inn illuminated reception desk and front lobby"
+                    className="w-full h-full"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-[#060911]/85 via-transparent to-transparent"
+                  />
+                  <div className="absolute bottom-5 left-5 right-5 glass-obsidian border border-[#D4B475]/25 rounded-sm p-4 sm:p-5">
+                    <p className="text-xs tracking-[0.18em] text-[#D4B475] mb-1">
+                      {HOTEL_CONFIG.contact.conciergeHours}
+                    </p>
+                    <p className="font-serif text-lg sm:text-xl text-[#F6F2EA]">
+                      Reception &amp; Guest Check-In Desk
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </TiltFrame>
+              </TiltFrame>
+            </div>
           </motion.div>
         </div>
       </div>

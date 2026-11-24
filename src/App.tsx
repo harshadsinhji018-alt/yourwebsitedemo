@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MotionConfig } from 'motion/react';
 import { Navbar } from './components/Navbar';
+import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { RoomsSection } from './components/RoomsSection';
@@ -8,8 +9,10 @@ import { AmenitiesSection } from './components/AmenitiesSection';
 import { GallerySection } from './components/GallerySection';
 import { AttractionsSection } from './components/AttractionsSection';
 import { LocationSection } from './components/LocationSection';
+import { FaqSection } from './components/FaqSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton';
 
 export default function App() {
   const [quotaExceeded, setQuotaExceeded] = useState(false);
@@ -55,6 +58,7 @@ export default function App() {
           </div>
         )}
 
+        <ScrollProgressBar />
         <Navbar onNavigateEnquiry={() => scrollToContact()} />
 
         <main className="flex-1">
@@ -67,10 +71,12 @@ export default function App() {
           <GallerySection />
           <AttractionsSection />
           <LocationSection />
+          <FaqSection />
           <ContactSection prefilledSubject={enquirySubject} />
         </main>
 
         <Footer />
+        <FloatingWhatsAppButton />
       </div>
     </MotionConfig>
   );

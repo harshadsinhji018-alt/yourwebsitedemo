@@ -8,13 +8,14 @@ const FOOTER_LINKS = [
   { label: 'Gallery', href: '#gallery' },
   { label: 'Neighborhood', href: '#attractions' },
   { label: 'Location', href: '#location' },
+  { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
 ];
 
 export function Footer() {
   return (
     <footer className="bg-[#060911] text-[#C8C1B4] border-t border-[#D4B475]/20">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-14 sm:py-16">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-14 pb-24 sm:pt-16 sm:pb-24 lg:pb-20">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-white/10">
           <div>
             <p className="font-serif text-2xl sm:text-3xl font-semibold text-[#F6F2EA]">

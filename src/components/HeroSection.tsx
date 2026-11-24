@@ -108,28 +108,30 @@ export function HeroSection({ onEnquireClick }: HeroSectionProps) {
 
           {/* Framed Hotel Silver Inn Main Entrance Photo */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <TiltFrame className="w-full max-w-[340px] sm:max-w-[380px] rounded-sm overflow-hidden border border-[#D4B475]/35 shadow-[0_28px_70px_rgba(0,0,0,0.6)]">
-              <div className="relative aspect-[3/4] w-full">
-                <LuxuryImage
-                  src={HOTEL_CONFIG.images.heroEntrance}
-                  alt="Hotel Silver Inn main glass entrance doorway in Naroda, Ahmedabad"
-                  loading="eager"
-                  className="w-full h-full"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-[#060911]/80 via-transparent to-transparent"
-                />
-                <div className="absolute bottom-4 left-4 right-4 glass-obsidian border border-[#D4B475]/30 rounded-sm p-3.5">
-                  <p className="text-[11px] tracking-[0.18em] text-[#D4B475]">
-                    GIDC Naroda · Ahmedabad
-                  </p>
-                  <p className="font-serif text-lg text-[#F6F2EA] mt-0.5">
-                    {HOTEL_CONFIG.displayBrand}
-                  </p>
+            <div className="w-full max-w-[340px] sm:max-w-[380px] animate-float-gentle float-hero">
+              <TiltFrame className="w-full rounded-sm overflow-hidden border border-[#D4B475]/35 shadow-[0_28px_70px_rgba(0,0,0,0.6)]">
+                <div className="relative aspect-[3/4] w-full">
+                  <LuxuryImage
+                    src={HOTEL_CONFIG.images.heroEntrance}
+                    alt="Hotel Silver Inn main glass entrance doorway in Naroda, Ahmedabad"
+                    loading="eager"
+                    className="w-full h-full"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-[#060911]/80 via-transparent to-transparent"
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 glass-obsidian border border-[#D4B475]/30 rounded-sm p-3.5">
+                    <p className="text-[11px] tracking-[0.18em] text-[#D4B475]">
+                      GIDC Naroda · Ahmedabad
+                    </p>
+                    <p className="font-serif text-lg text-[#F6F2EA] mt-0.5">
+                      {HOTEL_CONFIG.displayBrand}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </TiltFrame>
+              </TiltFrame>
+            </div>
           </div>
         </div>
       </motion.div>

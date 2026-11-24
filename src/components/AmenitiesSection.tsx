@@ -47,24 +47,25 @@ export function AmenitiesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            className="relative rounded-sm overflow-hidden border border-[#D4B475]/20 aspect-[4/5] max-h-[480px] w-full"
           >
-            <LuxuryImage
-              src={HOTEL_CONFIG.images.amenitiesCorridor}
-              alt="Hotel Silver Inn well-lit guest floor corridor and safety appointments"
-              className="w-full h-full"
-            />
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-t from-[#060911]/85 via-[#060911]/20 to-transparent"
-            />
-            <div className="absolute bottom-6 left-6 right-6">
-              <p className="text-xs tracking-[0.18em] text-[#D4B475] mb-1">
-                Lift &amp; Corridor Access
-              </p>
-              <h3 className="font-serif text-2xl sm:text-3xl text-[#F6F2EA]">
-                Brightly Lit Guest Floor Wings
-              </h3>
+            <div className="relative rounded-sm overflow-hidden border border-[#D4B475]/20 aspect-[4/5] max-h-[480px] w-full animate-float-gentle float-showcase-a">
+              <LuxuryImage
+                src={HOTEL_CONFIG.images.amenitiesCorridor}
+                alt="Hotel Silver Inn well-lit guest floor corridor and safety appointments"
+                className="w-full h-full"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-gradient-to-t from-[#060911]/85 via-[#060911]/20 to-transparent"
+              />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="text-xs tracking-[0.18em] text-[#D4B475] mb-1">
+                  Lift &amp; Corridor Access
+                </p>
+                <h3 className="font-serif text-2xl sm:text-3xl text-[#F6F2EA]">
+                  Brightly Lit Guest Floor Wings
+                </h3>
+              </div>
             </div>
           </motion.div>
 
@@ -73,24 +74,25 @@ export function AmenitiesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="relative rounded-sm overflow-hidden border border-[#D4B475]/20 aspect-[4/5] max-h-[480px] w-full"
           >
-            <LuxuryImage
-              src={HOTEL_CONFIG.images.amenitiesBathroom}
-              alt="Clean attached en-suite bathroom with shower and geyser at Hotel Silver Inn"
-              className="w-full h-full"
-            />
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-t from-[#060911]/85 via-[#060911]/20 to-transparent"
-            />
-            <div className="absolute bottom-6 left-6 right-6">
-              <p className="text-xs tracking-[0.18em] text-[#D4B475] mb-1">
-                Attached En-suite Baths
-              </p>
-              <h3 className="font-serif text-2xl sm:text-3xl text-[#F6F2EA]">
-                Modern Tiled Washrooms &amp; Hot Water
-              </h3>
+            <div className="relative rounded-sm overflow-hidden border border-[#D4B475]/20 aspect-[4/5] max-h-[480px] w-full animate-float-gentle float-showcase-b">
+              <LuxuryImage
+                src={HOTEL_CONFIG.images.amenitiesBathroom}
+                alt="Clean attached en-suite bathroom with shower and geyser at Hotel Silver Inn"
+                className="w-full h-full"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-gradient-to-t from-[#060911]/85 via-[#060911]/20 to-transparent"
+              />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="text-xs tracking-[0.18em] text-[#D4B475] mb-1">
+                  Attached En-suite Baths
+                </p>
+                <h3 className="font-serif text-2xl sm:text-3xl text-[#F6F2EA]">
+                  Modern Tiled Washrooms &amp; Hot Water
+                </h3>
+              </div>
             </div>
           </motion.div>
         </div>

@@ -22,6 +22,7 @@ const MOBILE_LINKS = [
   { label: 'Gallery', href: '#gallery' },
   { label: 'Neighborhood', href: '#attractions' },
   { label: 'Location', href: '#location' },
+  { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
 ];
 

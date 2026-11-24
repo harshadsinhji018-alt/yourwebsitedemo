@@ -40,6 +40,12 @@ export interface LocalityItem {
   description: string;
 }
 
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+}
+
 /**
  * Centralized configuration for Hotel Silver Inn, Naroda, Ahmedabad.
  * Unverified fields (such as room tariffs or external email) are kept optional/omitted.
@@ -61,6 +67,9 @@ export const HOTEL_CONFIG = {
     whatsappNumber: '919727050641',
     whatsappPrefill:
       'Hello Hotel Silver Inn (Naroda, Ahmedabad), I would like to enquire about room availability.',
+    floatingWhatsappNumber: '919875274952',
+    floatingWhatsappPrefill:
+      'Hello Hotel Silver Inn (Naroda, Ahmedabad), I would like to enquire about room availability and stay details.',
     conciergeHours: '24-Hour Front Desk',
   },
   location: {
@@ -400,4 +409,42 @@ export const HOTEL_CONFIG = {
         'Connected to Naroda Road, Ring Road, and wider Ahmedabad transit corridors—open the interactive map below for live directions and nearby places.',
     },
   ] as LocalityItem[],
+  faqs: [
+    {
+      id: 'faq-location',
+      question: 'Where is Hotel Silver Inn located?',
+      answer:
+        'Hotel Silver Inn is situated at Avadhpuri Society, Chandresh Society, Makarpura, GIDC Naroda, Ahmedabad, Gujarat 382330, India—offering direct access to GIDC Naroda and surrounding Ahmedabad road links.',
+    },
+    {
+      id: 'faq-rooms',
+      question: 'What room configurations are available at the hotel?',
+      answer:
+        'We offer air-conditioned Double Bed Rooms and Twin-Bed AC Rooms featuring two double beds (with two-seater lounge seating in select twin layouts). Rooms include split AC, ceiling fans, flat-screen TVs, storage cabinets, and attached tiled washrooms.',
+    },
+    {
+      id: 'faq-facilities',
+      question: 'Which guest facilities are provided during a stay?',
+      answer:
+        'Verified facilities at Hotel Silver Inn include Free Wi-Fi, Air Conditioning, On-Site Parking, Room Service, a 24-Hour Front Desk, Laundry service, and passenger Lift access.',
+    },
+    {
+      id: 'faq-front-desk',
+      question: 'Is the front desk available for round-the-clock assistance?',
+      answer:
+        'Yes. Our 24-Hour Front Desk is staffed day and night to assist arriving guests, coordinate room service and laundry requests, and share local directions.',
+    },
+    {
+      id: 'faq-parking-lift',
+      question: 'Does the property offer on-site parking and lift access?',
+      answer:
+        'Yes. Hotel Silver Inn provides on-site guest parking in GIDC Naroda along with a passenger lift for easy floor-to-floor access with luggage.',
+    },
+    {
+      id: 'faq-enquiry',
+      question: 'How can I check room availability or enquire about a stay?',
+      answer:
+        'You can contact our 24-Hour Front Desk directly by calling +91 97270 50641, messaging on WhatsApp, or submitting an enquiry in the Contact section below. This website does not collect online payments—stay details are confirmed directly with our front desk.',
+    },
+  ] as FaqItem[],
 };
