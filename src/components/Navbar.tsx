@@ -38,6 +38,7 @@ export function Navbar({ onNavigateEnquiry }: NavbarProps) {
     { label: t.nav.neighborhood, href: '#attractions' },
     { label: t.nav.location, href: '#location' },
     { label: t.nav.faq, href: '#faq' },
+    { label: t.nav.instagram, href: '#instagram' },
     { label: t.nav.contact, href: '#contact' },
   ];
 

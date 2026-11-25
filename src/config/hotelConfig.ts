@@ -46,6 +46,11 @@ export interface FaqItem {
   answer: string;
 }
 
+export interface InstagramPostItem {
+  id: string;
+  image: string;
+}
+
 /**
  * Centralized configuration for Hotel Royal Mansion, Kudasan, Gandhinagar.
  * Verified via Google Maps profile (https://maps.app.goo.gl/DJbKADscn5VAZ1nF7).
@@ -424,4 +429,16 @@ export const HOTEL_CONFIG = {
         'You can contact our 24-Hour Front Desk directly by calling +91 81558 70111, messaging on WhatsApp, or submitting an enquiry in the Contact section below. This website does not collect online payments—stay details are confirmed directly with our front desk.',
     },
   ] as FaqItem[],
+  instagram: {
+    handle: '@hotelroyalmansiongandhinagar',
+    profileUrl: 'https://www.instagram.com/hotelroyalmansiongandhinagar/',
+    posts: [
+      { id: 'ig-exterior', image: '/assets/aistudio/image_fce7176d.png' },
+      { id: 'ig-deluxe', image: '/assets/aistudio/image_f9149da0.png' },
+      { id: 'ig-lounge', image: '/assets/aistudio/image_51307cc6.png' },
+      { id: 'ig-study', image: '/assets/aistudio/image_e2c7bda5.png' },
+      { id: 'ig-kettle', image: '/assets/aistudio/image_460622f7.png' },
+      { id: 'ig-corridor', image: '/assets/aistudio/image_8abd17eb.png' },
+    ] as InstagramPostItem[],
+  },
 };

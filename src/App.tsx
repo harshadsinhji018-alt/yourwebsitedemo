@@ -11,6 +11,7 @@ import { GallerySection } from './components/GallerySection';
 import { AttractionsSection } from './components/AttractionsSection';
 import { LocationSection } from './components/LocationSection';
 import { FaqSection } from './components/FaqSection';
+import { InstagramSection } from './components/InstagramSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton';
@@ -82,7 +83,9 @@ export default function App() {
             <LocationSection />
             <SectionSeparator topSurface="ivory" bottomSurface="midnight" />
             <FaqSection />
-            <SectionSeparator topSurface="midnight" bottomSurface="obsidian" />
+            <SectionSeparator topSurface="midnight" bottomSurface="ivory" />
+            <InstagramSection />
+            <SectionSeparator topSurface="ivory" bottomSurface="obsidian" />
             <ContactSection prefilledSubject={enquirySubject} />
           </main>
 

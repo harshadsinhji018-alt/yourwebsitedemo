@@ -38,6 +38,7 @@ export interface TranslationContent {
     neighborhood: string;
     location: string;
     faq: string;
+    instagram: string;
     contact: string;
     enquireNow: string;
     callLabel: string;
@@ -182,6 +183,21 @@ export interface TranslationContent {
       }
     >;
   };
+  instagram: {
+    kicker: string;
+    headline: string;
+    description: string;
+    followCta: string;
+    viewPostLabel: string;
+    profileAria: string;
+    posts: Record<
+      string,
+      {
+        category: string;
+        caption: string;
+      }
+    >;
+  };
   contact: {
     kicker: string;
     headline: string;
@@ -252,6 +268,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationContent> = {
       neighborhood: 'Neighborhood',
       location: 'Location',
       faq: 'FAQ',
+      instagram: 'Instagram',
       contact: 'Contact',
       enquireNow: 'Enquire Now',
       callLabel: 'Call',
@@ -628,6 +645,47 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationContent> = {
         },
       },
     },
+    instagram: {
+      kicker: 'Official Instagram',
+      headline: 'Latest glimpses from Hotel Royal Mansion.',
+      description:
+        'Follow our official Instagram page for real photographs of our guest rooms, reception lounge, and hospitality updates in Kudasan, Gandhinagar.',
+      followCta: 'Follow Us on Instagram',
+      viewPostLabel: 'View on Instagram',
+      profileAria: 'Follow Hotel Royal Mansion on Instagram',
+      posts: {
+        'ig-exterior': {
+          category: 'Exterior',
+          caption:
+            'Hotel Royal Mansion facade at Shyam Sukan Complex near PDPU Cross Road, Kudasan.',
+        },
+        'ig-deluxe': {
+          category: 'Deluxe Room',
+          caption:
+            'Warm cove lighting, backlit wooden headboard, and crisp linens in our Deluxe AC Room.',
+        },
+        'ig-lounge': {
+          category: 'Reception',
+          caption:
+            'Relaxed lobby lounge seating and 24-hour check-in desk welcoming arriving guests.',
+        },
+        'ig-study': {
+          category: 'Business Stay',
+          caption:
+            'Dedicated TV console, work chair, and calm textured interiors for academic and corporate travelers.',
+        },
+        'ig-kettle': {
+          category: 'Guest Comforts',
+          caption:
+            'Padded navy headboard, bedside intercom, and electric kettle setup inside our Classic Room.',
+        },
+        'ig-corridor': {
+          category: '2nd Floor Wing',
+          caption:
+            'Quiet, marble-finished guest corridor leading cleanly to our air-conditioned rooms.',
+        },
+      },
+    },
     contact: {
       kicker: 'Contact Front Desk',
       headline: 'Speak directly with Hotel Royal Mansion.',
@@ -698,6 +756,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationContent> = {
       neighborhood: 'વિસ્તાર',
       location: 'સ્થાન',
       faq: 'પ્રશ્નો',
+      instagram: 'Instagram',
       contact: 'સંપર્ક',
       enquireNow: 'પૂછપરછ કરો',
       callLabel: 'કૉલ',
@@ -1059,6 +1118,47 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationContent> = {
         },
       },
     },
+    instagram: {
+      kicker: 'અધિકૃત Instagram',
+      headline: 'Hotel Royal Mansion ની તાજેતરની ઝલક.',
+      description:
+        'કુડાસણ, ગાંધીનગરમાં આવેલ અમારા ગેસ્ટ રૂમ્સ, રિસેપ્શન લાઉન્જ અને આતિથ્ય અપડેટ્સની વાસ્તવિક તસવીરો માટે અમારા અધિકૃત Instagram પેજને ફોલો કરો.',
+      followCta: 'Instagram પર ફોલો કરો',
+      viewPostLabel: 'Instagram પર જુઓ',
+      profileAria: 'Instagram પર Hotel Royal Mansion ને ફોલો કરો',
+      posts: {
+        'ig-exterior': {
+          category: 'બાહ્ય દેખાવ',
+          caption:
+            'PDPU ક્રોસ રોડ નજીક કુડાસણના શ્યામ સુકન કોમ્પ્લેક્સ ખાતે Hotel Royal Mansion નો બાહ્ય દેખાવ.',
+        },
+        'ig-deluxe': {
+          category: 'ડીલક્સ રૂમ',
+          caption:
+            'અમારા ડીલક્સ AC રૂમમાં હૂંફાળી કોવ લાઇટિંગ, બેકલિટ વુડન હેડબોર્ડ અને સ્વચ્છ લિનન્સ.',
+        },
+        'ig-lounge': {
+          category: 'રિસેપ્શન',
+          caption:
+            'આગમન કરતા મહેમાનોનું સ્વાગત કરતી આરામદાયક લોબી લાઉન્જ બેઠક અને 24-કલાક ચેક-ઇન ડેસ્ક.',
+        },
+        'ig-study': {
+          category: 'બિઝનેસ રોકાણ',
+          caption:
+            'શૈક્ષણિક અને કોર્પોરેટ મુલાકાતીઓ માટે સમર્પિત TV કોન્સોલ, વર્ક ચેર અને શાંત ટેક્સચર્ડ ઇન્ટિરિયર.',
+        },
+        'ig-kettle': {
+          category: 'મહેમાન સુવિધાઓ',
+          caption:
+            'અમારા ક્લાસિક રૂમમાં ગાદીવાળું નેવી હેડબોર્ડ, બેડસાઇડ ઇન્ટરકોમ અને ઇલેક્ટ્રિક કેટલની સુવિધા.',
+        },
+        'ig-corridor': {
+          category: 'બીજો માળ વિંગ',
+          caption:
+            'અમારા એર-કન્ડિશન્ડ રૂમ્સ તરફ દોરી જતો શાંત અને માર્બલ-ફિનિશ્ડ ગેસ્ટ કોરિડોર.',
+        },
+      },
+    },
     contact: {
       kicker: 'ફ્રન્ટ ડેસ્ક સંપર્ક',
       headline: 'Hotel Royal Mansion સાથે સીધો સંપર્ક કરો.',
@@ -1130,6 +1230,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationContent> = {
       neighborhood: 'आसपास',
       location: 'स्थान',
       faq: 'सवाल-जवाब',
+      instagram: 'Instagram',
       contact: 'संपर्क',
       enquireNow: 'पूछताछ करें',
       callLabel: 'कॉल',
@@ -1501,6 +1602,47 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationContent> = {
             'मैं कमरे की उपलब्धता या ठहराव के बारे में पूछताछ कैसे कर सकता हूँ?',
           answer:
             'आप +91 81558 70111 पर कॉल करके, WhatsApp पर संदेश भेजकर या नीचे दिए गए संपर्क फ़ॉर्म के माध्यम से हमारे 24-घंटे फ्रंट डेस्क से सीधे संपर्क कर सकते हैं। इस वेबसाइट पर कोई ऑनलाइन भुगतान नहीं लिया जाता—ठहराव की पुष्टि सीधे हमारे फ्रंट डेस्क द्वारा की जाती है।',
+        },
+      },
+    },
+    instagram: {
+      kicker: 'आधिकारिक Instagram',
+      headline: 'Hotel Royal Mansion की ताज़ा झलकियाँ।',
+      description:
+        'कुडासन, गांधीनगर में हमारे गेस्ट रूम्स, रिसेप्शन लाउंज और आतिथ्य अपडेट की वास्तविक तस्वीरों के लिए हमारे आधिकारिक Instagram पेज को फ़ॉलो करें।',
+      followCta: 'Instagram पर फ़ॉलो करें',
+      viewPostLabel: 'Instagram पर देखें',
+      profileAria: 'Instagram पर Hotel Royal Mansion को फ़ॉलो करें',
+      posts: {
+        'ig-exterior': {
+          category: 'बाहरी दृश्य',
+          caption:
+            'PDPU क्रॉस रोड, कुडासन के पास श्याम सुकन कॉम्प्लेक्स में Hotel Royal Mansion का बाहरी स्वरूप।',
+        },
+        'ig-deluxe': {
+          category: 'डीलक्स रूम',
+          caption:
+            'हमारे डीलक्स AC रूम में वॉर्म कोव लाइटिंग, बैकलिट वुडन हेडबोर्ड और साफ लिनन।',
+        },
+        'ig-lounge': {
+          category: 'रिसेप्शन',
+          caption:
+            'आने वाले मेहमानों का स्वागत करता आरामदायक लॉबी लाउंज और 24-घंटे चेक-इन डेस्क।',
+        },
+        'ig-study': {
+          category: 'बिज़नेस स्टे',
+          caption:
+            'शैक्षणिक और कॉर्पोरेट यात्रियों के लिए TV कंसोल, वर्क चेयर और शांत इंटीरियर।',
+        },
+        'ig-kettle': {
+          category: 'अतिथि सुविधा',
+          caption:
+            'क्लासिक रूम में पैडेड नेवी हेडबोर्ड, बेडसाइड इंटरकॉम और इलेक्ट्रिक केटल सुविधा।',
+        },
+        'ig-corridor': {
+          category: 'दूसरी मंज़िल विंग',
+          caption:
+            'हमारे एयर-कंडीशन्ड कमरों तक जाता शांत मार्बल-फ़िनिश गेस्ट कॉरिडोर।',
         },
       },
     },

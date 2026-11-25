@@ -1,4 +1,4 @@
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Instagram } from 'lucide-react';
 import { HOTEL_CONFIG } from '../config/hotelConfig';
 import { useLanguage } from '../i18n/LanguageContext';
 import { LuxuryDivider } from './LuxuryDivider';
@@ -14,6 +14,7 @@ export function Footer() {
     { label: t.nav.neighborhood, href: '#attractions' },
     { label: t.nav.location, href: '#location' },
     { label: t.nav.faq, href: '#faq' },
+    { label: t.nav.instagram, href: '#instagram' },
     { label: t.nav.contact, href: '#contact' },
   ];
 
@@ -51,18 +52,31 @@ export function Footer() {
             ))}
           </nav>
 
-          <a
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            aria-label={t.footer.backToTopAria}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-sm border border-[#D4B475]/35 bg-[#0B1324] text-xs font-medium text-[#D4B475] hover:bg-[#D4B475] hover:text-[#060911] hover:border-[#E7CE99] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(212,180,117,0.28)] whitespace-nowrap shrink-0 self-start lg:self-auto"
-          >
-            <span>{t.footer.backToTop}</span>
-            <ArrowUp className="w-3.5 h-3.5" />
-          </a>
+          <div className="flex items-center gap-3 self-start lg:self-auto shrink-0">
+            <a
+              href={HOTEL_CONFIG.instagram.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t.instagram.profileAria}
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-sm border border-[#D4B475]/35 bg-[#0B1324] text-xs font-medium text-[#D4B475] hover:bg-[#D4B475] hover:text-[#060911] hover:border-[#E7CE99] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(212,180,117,0.28)] whitespace-nowrap shrink-0"
+            >
+              <Instagram className="w-3.5 h-3.5 shrink-0" />
+              <span>{t.nav.instagram}</span>
+            </a>
+
+            <a
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              aria-label={t.footer.backToTopAria}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-sm border border-[#D4B475]/35 bg-[#0B1324] text-xs font-medium text-[#D4B475] hover:bg-[#D4B475] hover:text-[#060911] hover:border-[#E7CE99] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(212,180,117,0.28)] whitespace-nowrap shrink-0"
+            >
+              <span>{t.footer.backToTop}</span>
+              <ArrowUp className="w-3.5 h-3.5" />
+            </a>
+          </div>
         </div>
 
         <LuxuryDivider tone="dark" align="center" className="my-8 sm:my-10" />
