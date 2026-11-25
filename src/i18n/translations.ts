@@ -286,7 +286,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationContent> = {
       viewRoomsCta: 'View Rooms',
       entranceCaptionLocation: 'Kudasan · Gandhinagar',
       entranceImgAlt:
-        'Hotel Royal Mansion building exterior and signage in Kudasan, Gandhinagar',
+        'Hotel Royal Mansion marble reception foyer and guest wing entrance in Kudasan, Gandhinagar',
       backdropImgAlt:
         'Hotel Royal Mansion glass frontage exterior view in Kudasan, Gandhinagar',
       stats: [
@@ -774,7 +774,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationContent> = {
       viewRoomsCta: 'રૂમ્સ જુઓ',
       entranceCaptionLocation: 'કુડાસણ · ગાંધીનગર',
       entranceImgAlt:
-        'કુડાસણ, ગાંધીનગરમાં Hotel Royal Mansion બિલ્ડિંગનું બહારનું દ્રશ્ય અને સાઇનબોર્ડ',
+        'કુડાસણ, ગાંધીનગરમાં Hotel Royal Mansion ની માર્બલ રિસેપ્શન લોબી અને ગેસ્ટ કોરિડોર પ્રવેશ',
       backdropImgAlt: 'Hotel Royal Mansion નું ગ્લાસ ફ્રન્ટેજ બહારનું દ્રશ્ય',
       stats: [
         { value: 'AC રૂમ્સ', label: 'ક્લાસિક, ડીલક્સ અને એક્ઝિક્યુટિવ રૂમ્સ' },
@@ -1248,7 +1248,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationContent> = {
       viewRoomsCta: 'कमरे देखें',
       entranceCaptionLocation: 'कुडासन · गांधीनगर',
       entranceImgAlt:
-        'कुडासन, गांधीनगर में Hotel Royal Mansion भवन का बाहरी दृश्य और साइनबोर्ड',
+        'कुडासन, गांधीनगर में Hotel Royal Mansion की मार्बल रिसेप्शन लॉबी और गेस्ट कॉरिडोर प्रवेश',
       backdropImgAlt: 'Hotel Royal Mansion का ग्लास फ्रंटेज बाहरी दृश्य',
       stats: [
         { value: 'AC कमरे', label: 'क्लासिक, डीलक्स और एग्ज़ीक्यूटिव कमरे' },

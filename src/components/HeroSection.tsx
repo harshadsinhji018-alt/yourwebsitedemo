@@ -29,7 +29,7 @@ export function HeroSection({ onEnquireClick }: HeroSectionProps) {
       ref={sectionRef}
       className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden bg-[#060911] pt-24 pb-10"
     >
-      {/* Parallax widescreen interior backdrop */}
+      {/* Parallax widescreen exterior backdrop */}
       <motion.div
         style={{ y: bgY }}
         aria-hidden="true"
@@ -39,18 +39,18 @@ export function HeroSection({ onEnquireClick }: HeroSectionProps) {
           src={HOTEL_CONFIG.images.heroBackdrop}
           alt={t.hero.backdropImgAlt}
           loading="eager"
-          className="w-full h-full opacity-45"
+          className="w-full h-full opacity-85"
         />
       </motion.div>
 
-      {/* Measured contrast scrims for WCAG AA/AAA text legibility */}
+      {/* Measured contrast scrims preserving background visibility & text legibility */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 z-10 bg-gradient-to-b from-[#060911]/85 via-[#060911]/65 to-[#060911]"
+        className="absolute inset-0 z-10 bg-gradient-to-b from-[#060911]/70 via-[#060911]/25 to-[#060911]/95"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 z-10 bg-gradient-to-r from-[#060911]/95 via-[#060911]/70 to-[#060911]/45"
+        className="absolute inset-0 z-10 bg-gradient-to-r from-[#060911]/88 via-[#060911]/52 to-[#060911]/15"
       />
 
       {/* Subtle warm champagne particles */}

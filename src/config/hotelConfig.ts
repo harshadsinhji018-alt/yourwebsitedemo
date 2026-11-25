@@ -90,7 +90,7 @@ export const HOTEL_CONFIG = {
   },
   images: {
     heroBackdrop: '/assets/aistudio/image_db0ca1c0.png',
-    heroEntrance: '/assets/aistudio/image_fce7176d.png',
+    heroEntrance: '/assets/aistudio/image_94de092c.png',
     aboutReception: '/assets/aistudio/image_51307cc6.png',
     amenitiesCorridor: '/assets/aistudio/image_8abd17eb.png',
     amenitiesBathroom: '/assets/aistudio/image_4d200146.png',
