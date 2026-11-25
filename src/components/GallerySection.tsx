@@ -144,7 +144,7 @@ export function GallerySection() {
                 className={`group relative text-left rounded-sm overflow-hidden border border-[#0B1324]/15 bg-[#0B1324] shadow-[0_14px_36px_rgba(6,9,17,0.12)] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8A6A2E] ${
                   item.aspectClass === 'aspect-[16/10]' && category === 'All'
                     ? 'sm:col-span-2 aspect-[16/10]'
-                    : 'aspect-[3/4]'
+                    : 'aspect-[4/3]'
                 }`}
               >
                 <LuxuryImage

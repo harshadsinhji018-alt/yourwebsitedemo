@@ -67,9 +67,9 @@ export function AboutSection() {
             transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 flex justify-center lg:justify-end"
           >
-            <div className="w-full max-w-[460px] animate-float-gentle float-about">
+            <div className="w-full max-w-[520px] animate-float-gentle float-about">
               <TiltFrame className="w-full rounded-sm overflow-hidden shadow-[0_24px_60px_rgba(6,9,17,0.18)]">
-                <div className="relative aspect-[3/4] w-full">
+                <div className="relative aspect-[4/3] w-full">
                   <LuxuryImage
                     src={HOTEL_CONFIG.images.aboutReception}
                     alt={t.about.receptionImgAlt}

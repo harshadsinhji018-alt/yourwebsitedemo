@@ -1,6 +1,6 @@
 {
-  "name": "Hotel Silver Inn",
-  "description": "Hotel Silver Inn in GIDC Naroda, Ahmedabad — air-conditioned guest rooms, 24-hour front desk, room service, free Wi-Fi, lift, laundry, and parking.",
+  "name": "Hotel Royal Mansion",
+  "description": "Hotel Royal Mansion in Kudasan, Gandhinagar — air-conditioned guest rooms, 24-hour front desk, room service, free Wi-Fi, lift, laundry, and on-site parking.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

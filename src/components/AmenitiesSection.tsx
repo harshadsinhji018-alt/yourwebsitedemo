@@ -54,7 +54,7 @@ export function AmenitiesSection() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative rounded-sm overflow-hidden border border-[#D4B475]/20 aspect-[4/5] max-h-[480px] w-full animate-float-gentle float-showcase-a">
+            <div className="relative rounded-sm overflow-hidden border border-[#D4B475]/20 aspect-square max-h-[440px] w-full animate-float-gentle float-showcase-a">
               <LuxuryImage
                 src={HOTEL_CONFIG.images.amenitiesCorridor}
                 alt={t.amenities.corridorImgAlt}
@@ -81,7 +81,7 @@ export function AmenitiesSection() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative rounded-sm overflow-hidden border border-[#D4B475]/20 aspect-[4/5] max-h-[480px] w-full animate-float-gentle float-showcase-b">
+            <div className="relative rounded-sm overflow-hidden border border-[#D4B475]/20 aspect-square max-h-[440px] w-full animate-float-gentle float-showcase-b">
               <LuxuryImage
                 src={HOTEL_CONFIG.images.amenitiesBathroom}
                 alt={t.amenities.bathroomImgAlt}
@@ -103,7 +103,7 @@ export function AmenitiesSection() {
           </motion.div>
         </div>
 
-        {/* 7 Verified Hotel Silver Inn Facility Cards */}
+        {/* 7 Verified Hotel Royal Mansion Facility Cards */}
         <div className="flex flex-wrap justify-center gap-6">
           {HOTEL_CONFIG.amenities.map((amenity, idx) => {
             const Icon = ICON_MAP[amenity.iconName];

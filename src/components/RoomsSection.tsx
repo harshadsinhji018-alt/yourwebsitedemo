@@ -11,7 +11,7 @@ interface RoomsSectionProps {
   onEnquireRoom: (roomName: string) => void;
 }
 
-type CategoryFilter = 'All' | 'Double Bed Rooms' | 'Twin Bed Rooms';
+type CategoryFilter = 'All' | 'Deluxe Rooms' | 'Classic Rooms';
 
 export function RoomsSection({ onEnquireRoom }: RoomsSectionProps) {
   const { t } = useLanguage();
@@ -24,8 +24,8 @@ export function RoomsSection({ onEnquireRoom }: RoomsSectionProps) {
       : HOTEL_CONFIG.rooms.filter((room) => room.category === filter);
 
   const getTabLabel = (tab: CategoryFilter) => {
-    if (tab === 'Double Bed Rooms') return t.rooms.tabs.double;
-    if (tab === 'Twin Bed Rooms') return t.rooms.tabs.twin;
+    if (tab === 'Deluxe Rooms') return t.rooms.tabs.double;
+    if (tab === 'Classic Rooms') return t.rooms.tabs.twin;
     return t.rooms.tabs.all;
   };
 
@@ -77,7 +77,7 @@ export function RoomsSection({ onEnquireRoom }: RoomsSectionProps) {
             aria-label={t.rooms.filterAria}
             className="inline-flex flex-wrap items-center gap-1.5 p-1 bg-[#060911] border border-[#D4B475]/20 rounded-sm self-start lg:self-auto"
           >
-            {(['All', 'Double Bed Rooms', 'Twin Bed Rooms'] as const).map(
+            {(['All', 'Deluxe Rooms', 'Classic Rooms'] as const).map(
               (tab) => {
                 const active = filter === tab;
                 return (

@@ -109,11 +109,11 @@ export function HeroSection({ onEnquireClick }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Framed Hotel Silver Inn Main Entrance Photo */}
+          {/* Framed Hotel Royal Mansion Exterior Entrance Photo */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="w-full max-w-[340px] sm:max-w-[380px] animate-float-gentle float-hero">
+            <div className="w-full max-w-[460px] lg:max-w-[500px] animate-float-gentle float-hero">
               <TiltFrame className="w-full rounded-sm overflow-hidden border border-[#D4B475]/35 shadow-[0_28px_70px_rgba(0,0,0,0.6)]">
-                <div className="relative aspect-[3/4] w-full">
+                <div className="relative aspect-[4/3] w-full">
                   <LuxuryImage
                     src={HOTEL_CONFIG.images.heroEntrance}
                     alt={t.hero.entranceImgAlt}
